@@ -1,1 +1,0 @@
-GitHub Pages дээр оруулах файлууд. index.html, manifest.json, sw.js, icon.png файлуудыг repository root хэсэгт upload хийнэ. Дараа нь Settings > Pages > main branch > root сонгоно.
