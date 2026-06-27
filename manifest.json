@@ -1,0 +1,15 @@
+{
+  "name": "Тэнгэрийн Мэлмий — Зурхайн Өргөө",
+  "short_name": "Тэнгэрийн Мэлмий",
+  "description": "Дэлгэрэнгүй зурхайн тайлангийн систем",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#061b3f",
+  "theme_color": "#061b3f",
+  "icons": [
+    { "src": "icon.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
