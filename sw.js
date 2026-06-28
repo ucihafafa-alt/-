@@ -1,4 +1,4 @@
-const CACHE='tengerin-melmii-v7-1-fixed';
+const CACHE='tengerin-melmii-v8-16-real2';
 const ASSETS=['./','index.html','app.js?v=7_1_fixed','icon.png','bg.jpg','manifest.json'];
 self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS).catch(()=>{})));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
