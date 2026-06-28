@@ -1,5 +1,4 @@
-const CACHE='tengerin-melmii-v8-16-real2';
-const ASSETS=['./','index.html','app.js?v=7_1_fixed','icon.png','bg.jpg','manifest.json'];
-self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS).catch(()=>{})));});
-self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
-self.addEventListener('fetch',event=>{const req=event.request;const url=new URL(req.url);if(req.method!=='GET')return;if(url.pathname.endsWith('.html')||url.pathname.endsWith('.js')||url.pathname.endsWith('/')||url.search.includes('v=')){event.respondWith(fetch(req).then(res=>{const clone=res.clone();caches.open(CACHE).then(c=>c.put(req,clone));return res;}).catch(()=>caches.match(req)));return;}event.respondWith(caches.match(req).then(cached=>cached||fetch(req).then(res=>{const clone=res.clone();caches.open(CACHE).then(c=>c.put(req,clone));return res;})));});
+const CACHE='tengerin-melmii-v8-16pages-screenfix';
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./','index.html','app.js','icon.png','bg.jpg','manifest.json'])))});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));

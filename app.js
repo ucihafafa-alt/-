@@ -211,3 +211,41 @@ const branchQual = (typeof ANIMALS !== 'undefined') ? ANIMALS : {};
   printPdf=doPrint;
   saveWord=doWord;
 })();
+
+
+/* ===== SCREEN/PDF 16 PAGE FORCE FIX ===== */
+(function(){
+  function setTiles16(pr){
+    const tiles=$('tiles'); if(!tiles) return;
+    tiles.innerHTML=`<div class="tile"><b>${pr.color} ${pr.animal}</b><span>Жил</span></div><div class="tile"><b>${pr.elem}</b><span>Махбод</span></div><div class="tile"><b>${pr.wsym} ${pr.wname}</b><span>Орд</span></div><div class="tile"><b>${pr.age}</b><span>Нас</span></div><div class="tile"><b>${pr.m.base}</b><span>Төв матриц</span></div><div class="tile"><b>16</b><span>PDF хуудас</span></div>`;
+  }
+  function generate16(){
+    try{
+      const pr=profile();
+      renderMatrix(pr);
+      setTiles16(pr);
+      $('reportBox').innerHTML=build16Pages(pr);
+      $('result').style.display='block';
+      $('result').scrollIntoView({behavior:'smooth'});
+      toast('16 хуудасны тайлан бэлэн боллоо. PDF товч дарж хадгална уу.');
+    }catch(e){toast(e.message||'Мэдээллээ зөв оруулна уу.')}
+  }
+  function print16(){
+    try{
+      const pr=profile();
+      $('printDoc').innerHTML=build16Pages(pr);
+      setTimeout(()=>window.print(),80);
+    }catch(e){toast(e.message||'Эхлээд мэдээллээ зөв оруулна уу.')}
+  }
+  function word16(){
+    try{
+      const pr=profile();
+      const html=`<html><head><meta charset="utf-8"><style>body{font-family:'Times New Roman',serif;color:#111}.page{page-break-after:always;padding:30px;min-height:980px}h2{color:#7e5d1f;border-bottom:1px solid #d7b35f}.meta td{padding:4px 12px;border-bottom:1px dotted #aaa}.paybox{border:1px solid #d7b35f;background:#fff8df;padding:18px}</style></head><body>`+build16Pages(pr).replaceAll('pdf-page','page').replaceAll('pdf-frame','').replaceAll('pdf-bg','').replaceAll('pdf-logo-small','').replaceAll('pdf-logo','')+`</body></html>`;
+      const blob=new Blob([html],{type:'application/msword;charset=utf-8'});
+      const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tengerin-melmii-16-huudas-tailan.doc';a.click();URL.revokeObjectURL(a.href);
+      toast('16 хуудасны Word файл хадгалагдлаа.');
+    }catch(e){toast(e.message||'Эхлээд мэдээллээ зөв оруулна уу.')}
+  }
+  window.generate=generate16; window.printPdf=print16; window.saveWord=word16;
+  try{generate=generate16; printPdf=print16; saveWord=word16;}catch(_){ }
+})();
