@@ -59,36 +59,19 @@ h2{font-size:clamp(25px,5.5vw,38px);color:var(--gold2);font-style:italic;letter-
  .page-no{position:absolute;right:16mm;bottom:12mm;font-size:10pt;color:#9a7b34;z-index:4}
 }
 
-/* V10 PDF/Word print fixes */
+/* V11 smart report + print fixes */
+.report-section{margin:22px 0;padding-top:2px}.report-section h2{font-size:24px;line-height:1.25}.report-section p,.report-section li{font-size:17px;line-height:1.65}.report-section ul{padding-left:26px}
 @media print{
- @page{size:A4;margin:0!important}
- body:before,body:after,.stars,.wrap,.author-fixed,.toast,.modal{display:none!important}
- body *{visibility:hidden!important}
- #printDoc,#printDoc *{visibility:visible!important}
- #printDoc{display:block!important;position:absolute!important;left:0!important;top:0!important;width:100%!important;background:#fff!important}
- .pdf-page{position:relative!important;width:210mm!important;height:297mm!important;margin:0!important;background:#fff!important;color:#111!important;page-break-after:always!important;break-after:page!important;overflow:hidden!important;padding:25mm 20mm 18mm!important;font-family:'Times New Roman',serif!important;font-style:normal!important}
+ @page{size:A4 portrait;margin:0}
+ .pdf-page{width:210mm!important;height:297mm!important;margin:0!important;page-break-after:always!important;break-after:page!important;overflow:hidden!important;padding:20mm 18mm 18mm!important;background:#fff!important;color:#111!important;font-style:normal!important}
  .pdf-page:last-child{page-break-after:auto!important;break-after:auto!important}
- .pdf-frame{position:absolute!important;inset:8mm!important;border:1pt solid #d7b35f!important;z-index:2!important;pointer-events:none!important}
- .pdf-bg{position:absolute!important;left:8mm!important;right:8mm!important;bottom:8mm!important;width:194mm!important;height:58mm!important;object-fit:cover!important;opacity:.26!important;z-index:0!important}
- .pdf-bg.tall{top:8mm!important;bottom:8mm!important;height:281mm!important;opacity:.13!important}
- .pdf-content{position:relative!important;z-index:1!important;max-height:245mm!important;overflow:hidden!important}
- .cover-content{text-align:center!important;max-height:none!important}
- .pdf-logo{display:block!important;width:38mm!important;margin:0 auto 6mm!important}
- .pdf-logo-corner{position:absolute!important;top:11mm!important;right:16mm!important;width:15mm!important;z-index:3!important;opacity:.92!important}
- .pdf-title{text-align:center!important;color:#0c2146!important;font-size:24pt!important;font-weight:bold!important;letter-spacing:.04em!important;margin:0 0 2mm!important}
- .pdf-sub{text-align:center!important;color:#8b641f!important;font-size:15pt!important;font-weight:bold!important;margin-bottom:7mm!important}
- .pdf-page h2{color:#7e5d1f!important;text-align:left!important;font-size:18pt!important;line-height:1.22!important;margin:0 0 8mm!important;border-bottom:1pt solid #e0c47a!important;padding:0 20mm 3mm 0!important;text-transform:none!important}
- .cover-page h2{text-align:center!important;color:#0c2146!important;border:0!important;padding:0!important;margin:5mm 0 7mm!important;font-size:18pt!important;text-transform:uppercase!important}
- .pdf-section p,.pdf-section li{font-size:11.2pt!important;line-height:1.52!important;color:#111!important;margin:0 0 4mm!important}
- .pdf-section ul{padding-left:17px!important;margin:3mm 0!important}
- .pdf-meta{width:86%!important;margin:6mm auto!important;border-collapse:collapse!important;font-size:11.5pt!important;line-height:1.55!important}
- .pdf-meta.inner{width:100%!important;margin:0 0 8mm!important}
- .pdf-meta td{border-bottom:1px dotted #bfae7a!important;padding:1.5mm 0!important}
- .pdf-meta td:first-child{font-weight:bold!important;width:42%!important;color:#4b3614!important}
- .cover-note{font-size:11.5pt!important;line-height:1.55!important;color:#111!important;margin:7mm auto!important;width:86%!important;text-align:center!important}
- .bank{border:1pt solid #d8c28a!important;background:#fff8dd!important;padding:4mm!important;margin-top:6mm!important;color:#111!important}
- .pdf-author{position:absolute!important;left:17mm!important;bottom:11mm!important;color:#5d4518!important;font-size:9.5pt!important;z-index:3!important}
- .page-no{position:absolute!important;right:16mm!important;bottom:11mm!important;font-size:9.5pt!important;color:#9a7b34!important;z-index:4!important}
+ .pdf-bg{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:.06!important;z-index:0!important}
+ .pdf-frame{position:absolute!important;inset:8mm!important;border:1px solid rgba(170,126,40,.55)!important;z-index:1!important;pointer-events:none!important}
+ .pdf-content{position:relative!important;z-index:2!important;font-size:12.5pt!important;line-height:1.52!important;padding-top:4mm!important;max-height:244mm!important;overflow:hidden!important}
+ .pdf-content p{margin:0 0 8px!important}.pdf-content ul{margin:8px 0 0 0!important;padding-left:20px!important}.pdf-content li{margin:0 0 6px!important;line-height:1.45!important}
+ .pdf-section h2{font-size:24pt!important;line-height:1.18!important;margin:0 26mm 14mm 0!important;color:#8b6424!important;font-style:italic!important;text-align:left!important;border-bottom:1px solid rgba(196,154,73,.72)!important;padding-bottom:5mm!important;text-transform:none!important;max-width:150mm!important}
+ .pdf-logo-small{position:absolute!important;top:10mm!important;right:14mm!important;left:auto!important;transform:none!important;width:18mm!important;height:18mm!important;object-fit:contain!important;z-index:4!important}
+ .pdf-logo{width:38mm!important;margin:0 auto 8mm!important;display:block!important}.pdf-title{font-size:24pt!important;font-weight:bold!important;text-align:center!important;color:#0b2148!important}.pdf-sub{text-align:center!important;color:#8b6424!important;letter-spacing:4px!important;margin-bottom:8mm!important}.cover-content h2{font-size:18pt!important;text-align:center!important;margin:8mm 0!important;color:#8b6424!important}.pdf-meta{width:100%!important;border-collapse:collapse!important;background:rgba(255,255,255,.84)!important}.pdf-meta td{border:1px solid rgba(140,100,30,.45)!important;padding:7px 9px!important;font-size:12pt!important}.pdf-meta td:first-child{font-weight:bold;width:40%}.pdf-author{position:absolute!important;bottom:10mm!important;left:18mm!important;right:18mm!important;text-align:center!important;color:#8b6424!important;font-size:10pt!important;z-index:3!important}.page-no{position:absolute!important;bottom:9mm!important;right:16mm!important;font-size:10pt!important;color:#8b6424!important;z-index:3!important}
 }
 
 </style>
@@ -107,5 +90,5 @@ h2{font-size:clamp(25px,5.5vw,38px);color:var(--gold2);font-style:italic;letter-
 <section id="about" class="card" style="margin-top:18px"><h2>Өргөөний тухай</h2><p>“Тэнгэрийн Мэлмий — Зурхайн Өргөө” нь төрсөн өгөгдөл, цаг үеийн өнгө, зан төлөвийн хэмнэлийг нэгтгэн уншиж, амьдралын зам мөр, ажил үйлс, хайр дурлал, гэр бүл, санхүү, эрүүл мэндэд анхаарах чиглэлийг тайлбарлан хүргэнэ.</p></section>
 </div>
 <div class="author-fixed">© Системийн зохиогч: Л.Батцог</div><div id="modal" class="modal"><div class="modalbox"><span class="close" onclick="closeModal()">×</span><div id="modalContent"></div></div></div><div id="toast" class="toast"></div><div id="printDoc"></div>
-<script defer src="app.js?v=v10_pdf_word_final_20260629"></script>
+<script defer src="app.js?v=11_smart_engine_20260629"></script>
 </body></html>
